@@ -1,33 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth
-;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+class HalamanAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        if(Auth::check()) {
-            if(Auth::user()->role == 'admin') {
-                return view('dashboard.admin.home');
-            }
-            elseif(Auth::user()->role == 'asisten') {
-                return view('dashboard.asisten.home');
-            }
-            else {
-                return view('dashboard.user.home');
-            }
-        }
-        else {
-            return redirect()->route('login');
-        }
-        
+        return view('dashboard.admin.halamanadmin');
     }
 
     /**
