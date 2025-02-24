@@ -20,15 +20,14 @@ class HomeController extends Controller
             elseif(Auth::user()->role == 'asisten') {
                 return view('dashboard.asisten.home');
             }
-            else {
+            else 
                 return view('dashboard.user.home');
             }
-        }
-        else {
+        else{
             return redirect()->route('login');
         }
-        
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -41,7 +40,7 @@ class HomeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+public function store(Request $request)
     {
         //
     }
@@ -78,3 +77,4 @@ class HomeController extends Controller
         //
     }
 }
+
