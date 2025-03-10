@@ -19,6 +19,6 @@ class Admin
         if(Auth::user()->role == "admin") {
             return $next($request);
         }
-    abort(403, 'Unauthorized');
+    abort(403, 'Unauthorized action');
     }
 };
