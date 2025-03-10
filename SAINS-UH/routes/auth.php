@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -64,5 +65,16 @@ Route::middleware('auth')->group(function () {
     Route::resource('halamanadmin', HalamanAdminController::class) ->middleware('admin');
     Route::resource('halamanasisten', HalamanAsistenController::class) ->middleware('asisten');
     Route::resource('halamanuser', HalamanUserController::class) ->middleware('user');
+
+    Route::resource('daftar-pengguna', AdminUserController::class)
+    ->middleware(['auth', 'admin'])
+    ->names([
+        'index' => 'admin.users.index',
+        'create' => 'admin.users.create',
+        'store' => 'admin.users.store',
+        'edit' => 'admin.users.edit',
+        'update' => 'admin.users.update',
+        'destroy' => 'admin.users.destroy',
+    ]);
 
 });

@@ -15,12 +15,12 @@ class AdminUserController extends Controller
                     ->select('id', 'name', 'nim', 'email')
                     ->get();
         
-        return view('admin.users.index', compact('users'));
+        return view('dashboard.admin.index', compact('users'));
     }
 
     public function create()
     {
-        return view('admin.users.create');
+        return view('dashboard.admin.create-user');
     }
 
     public function store(Request $request)
@@ -29,6 +29,7 @@ class AdminUserController extends Controller
             'name' => 'required|string|max:255',
             'nim' => 'required|string|unique:users,nim',
             'email' => 'required|email|unique:users,email',
+            'gender' => 'required|string|max:1',
             'password' => 'required|min:8',
         ]);
 
@@ -36,6 +37,7 @@ class AdminUserController extends Controller
             'name' => $request->name,
             'nim' => $request->nim,
             'email' => $request->email,
+            'gender' => $request->gender,       
             'password' => Hash::make($request->password),
             'created_at' => now(),
             'updated_at' => now(),
@@ -51,7 +53,7 @@ class AdminUserController extends Controller
                     ->where('id', $id)
                     ->first();
         
-        return view('admin.users.edit', compact('user'));
+        return view('dashboard.admin.edit-user', compact('user'));
     }
 
     public function update(Request $request, $id)

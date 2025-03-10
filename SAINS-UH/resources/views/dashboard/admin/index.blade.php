@@ -1,4 +1,4 @@
-@extends('layouts.base-admin')
+@extends('dashboard.admin.base-admin')
 
 @section('title', 'Daftar User')
 

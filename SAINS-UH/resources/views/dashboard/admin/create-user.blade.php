@@ -1,4 +1,4 @@
-@extends('layouts.base-admin')
+@extends('dashboard.admin.base-admin')
 
 @section('title', 'Tambah User')
 
@@ -33,6 +33,15 @@
                 <input type="email" class="form-control @error('email') is-invalid @enderror" 
                        name="email" value="{{ old('email') }}">
                 @error('email')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Gender (L / P)</label>
+                <input type="text" class="form-control @error('gender') is-invalid @enderror" 
+                       name="gender">
+                @error('gender')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
