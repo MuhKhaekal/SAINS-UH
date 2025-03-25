@@ -86,7 +86,7 @@ class FakultasController extends Controller
             ->where('id',id)
             ->update($data);
 
-        return redirect()->route('admin.faculties')
+        return redirect()->route('admin.faculties');
     }
 
     /**
